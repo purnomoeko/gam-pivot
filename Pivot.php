@@ -1,4 +1,8 @@
 <?php
+
+namespace GamPivot;
+
+
 class Pivot
 {
     /**
@@ -105,8 +109,10 @@ class Pivot
                         } elseif ($item instanceof Pivot_Count) {
                             $tmpCount[$k0][$reg[$split]][$reg[$column]][$item->getKey()]++;
                         }
-                        $tmp[$k0][$reg[$split]][$reg[$column]][$item] += $reg[$item];
-                        $this->_splits[$reg[$split]][$reg[$column]][$item] = $item;
+                        if(!$item instanceof Pivot_Count):
+                            $tmp[$k0][$reg[$split]][$reg[$column]][$item] += $reg[$item];
+                            $this->_splits[$reg[$split]][$reg[$column]][$item] = $item;
+                        endif;
                     }
                     break;
                 case 2:
@@ -118,8 +124,11 @@ class Pivot
                         } elseif ($item instanceof Pivot_Count) {
                             $tmpCount[$k0][$k1][$reg[$split]][$reg[$column]][$item->getKey()] ++;
                         }
-                        $tmp[$k0][$k1][$reg[$split]][$reg[$column]][$item] += $reg[$item];
-                        $this->_splits[$reg[$split]][$reg[$column]][$item] = $item;
+
+                        if(!$item instanceof Pivot_Count):
+                            $tmp[$k0][$k1][$reg[$split]][$reg[$column]][$item] += $reg[$item];
+                            $this->_splits[$reg[$split]][$reg[$column]][$item] = $item;
+                        endif;
                     }
                     break;
                 case 3:

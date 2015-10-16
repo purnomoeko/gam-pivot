@@ -1,7 +1,8 @@
 <?php
-//localhost:8082/tests/pivot/test.php
-require('Pivot.php');
+namespace GamPivot;
+require "Pivot.php";
 
+use \GamPivot\Pivot;
 $recordset = array(
     array('host' => 1, 'country' => 'fr', 'year' => 2010, 'month' => 1, 'clicks' => 123, 'users' => 4),
     array('host' => 1, 'country' => 'fr', 'year' => 2010, 'month' => 2, 'clicks' => 134, 'users' => 5),
@@ -9,7 +10,7 @@ $recordset = array(
     array('host' => 1, 'country' => 'es', 'year' => 2010, 'month' => 1, 'clicks' => 113, 'users' => 4),
     array('host' => 1, 'country' => 'es', 'year' => 2010, 'month' => 2, 'clicks' => 234, 'users' => 5),
     array('host' => 1, 'country' => 'es', 'year' => 2010, 'month' => 3, 'clicks' => 421, 'users' => 2),
-    array('host' => 1, 'country' => 'es', 'year' => 2010, 'month' => 4, 'clicks' => 22,  'users' => 3),
+    array('host' => 2, 'country' => 'es', 'year' => 2010, 'month' => 4, 'clicks' => 22,  'users' => 3),
     array('host' => 2, 'country' => 'es', 'year' => 2010, 'month' => 1, 'clicks' => 111, 'users' => 2),
     array('host' => 2, 'country' => 'es', 'year' => 2010, 'month' => 2, 'clicks' => 2,   'users' => 4),
     array('host' => 3, 'country' => 'es', 'year' => 2010, 'month' => 3, 'clicks' => 34,  'users' => 2),
@@ -40,14 +41,17 @@ function simpleHtmlTable($data)
     echo "</table>";
 }
 
+
+
 echo "<h2>original data</h2>";
 simpleHtmlTable($recordset);
 
 echo "<h2>pivot on 'host'</h2>";
 $data = Pivot::factory($recordset)
-    ->pivotOn(array('host'))
-    ->addColumn(array('year', 'month'), array('users', 'clicks',))
+    ->pivotOn(array('month'))
+    ->addColumn(array('year'), array('clicks',))
     ->fetch();
+
 simpleHtmlTable($data);
 
 echo "<h2>pivot on 'host' with totals</h2>";
