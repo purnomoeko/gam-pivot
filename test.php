@@ -1,6 +1,6 @@
 <?php
-namespace GamPivot;
-require "Pivot.php";
+namespace GamPivot\test;
+require "GamPivot.php";
 
 use \GamPivot\Pivot;
 $recordset = array(
