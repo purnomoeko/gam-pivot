@@ -15,12 +15,12 @@
             "email": "eko.purnomo@icloud.com",
             "homepage": "http://eko.cloudmotion.co/",
             "role": "Maintainer"
-        },
+        }
     ],
     "support": {
     },
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.4.0"
     },
     "extra": {
         "branch-alias": {
