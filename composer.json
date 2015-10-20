@@ -2,7 +2,8 @@
     "name": "purnomoeko/gam-pivot",
     "description": "PHP Gam Pivot ",
     "keywords": [
-        "php", "Pivot Table"
+        "php", 
+        "Pivot Table",
         "Pivot"
     ],
     "homepage": "http://www.youcloudy.com/",
